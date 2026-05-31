@@ -17,7 +17,7 @@ func TestGetAPIKey(t *testing.T) {
 
 	for name, tc := range tests {
 		got1, got2 := GetAPIKey(tc.input)
-		if tc.want == got1 && got2 == nil {
+		if tc.want != got1 && got2 == nil {
 			t.Fatalf("%s: expected: %v - nil, got: %v - %v", name, tc.want, got1, got2)
 		}
 	}
