@@ -18,7 +18,7 @@ jobs:
         with:
           go-version: "1.26.0"
 
-      - name: Force Failure
+      - name: Checking our tests
         run: (go test -cover ./...)
 
   style:
@@ -36,3 +36,9 @@ jobs:
 
       - name: Check style
         run: (test -z $(go fmt ./...))
+
+      - name: linting prep
+        run: go install honnef.co/gi/tools/cmd/staticcheck@latest
+
+      - name: linting check
+        run: staticcheck ./...
